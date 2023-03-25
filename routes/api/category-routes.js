@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   // find all categories
   // be sure to include its associated Products
   try {
-    const categoryData = await Location.findAll();
+    const categoryData = await Category.findAll();
     res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
@@ -18,13 +18,13 @@ router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
-    const categoryData = await Location.findByPk(req.params.id, {
+    const categoryData = await Category.findByPk(req.params.id, {
       // JOIN with travellers, using the Trip through table
-      include: [{ model: Product, through: Trip, as: 'location_travellers' }]
+      include: [{ model: Product, through: Category, as: 'product_category' }]
     });
 
     if (!categoryData) {
-      res.status(404).json({ message: 'No location found with this id!' });
+      res.status(404).json({ message: 'No product found with this id!' });
       return;
     }
 
