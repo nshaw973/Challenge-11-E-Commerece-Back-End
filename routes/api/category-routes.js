@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
     });
 
     if (!categoryData) {
-      res.status(404).json({ message: 'No Category found with this id!' });
+      res.status(404).json({ message: 'No category found with this id!' });
       return;
     }
 
@@ -32,6 +32,13 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//Updated CATEGORY body for POST, and PUT
+/*   
+{
+  "category_name": "ENTER NAME OF CATEGORY HERE",
+} 
+*/
 
 router.post('/', async (req, res) => {
   // create a new category

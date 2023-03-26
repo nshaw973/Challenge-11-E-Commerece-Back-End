@@ -34,6 +34,13 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+//Updated TAG body for POST, and PUT
+/*   
+{
+  "tag_name": "ENTER NAME OF TAG HERE",
+} 
+*/
+
 router.post('/', async (req, res) => {
   // create a new tag
   try {
