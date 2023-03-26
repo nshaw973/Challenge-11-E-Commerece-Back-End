@@ -22,7 +22,7 @@ Product.belongsToMany(Tag, {
     unique: false
   },
   // Alias
-  as: 'product_tags'
+  as: 'tag_data'
 });
 
 // Tags belongToMany Products (through ProductTag)
@@ -32,7 +32,7 @@ Tag.belongsToMany(Product, {
     unique: false
   },
   // Alias
-  as: 'tags'
+  as: 'product_data'
 });
 
 module.exports = {
