@@ -8,7 +8,9 @@ router.get('/', async (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   try {
-    const productData = await Product.findAll();
+    const productData = await Product.findAll({
+      include: [{ model: Category }, { model: Tag, as: 'tag_data' ,through: ProductTag }]
+    });
     res.status(200).json(productData);
   } catch (err) {
     res.status(500).json(err);
@@ -18,9 +20,10 @@ router.get('/', async (req, res) => {
 // get one product
 router.get('/:id', async (req, res) => {
   // find a single product by its `id`
-  // be sure to include its associated Category and Tag data
   try {
     const productData = await Product.findByPk(req.params.id, {
+      // Joins the category table where the products category_id connects to the categories primary key ID 
+      // Then links Tag through the product tag, via the tag_id foreign key, then the producttag product_id foreign key connects to the products pk id, like a daisy chain
       include: [{ model: Category }, { model: Tag, as: 'tag_data' ,through: ProductTag}] 
     });
 

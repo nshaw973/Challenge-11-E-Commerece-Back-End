@@ -7,7 +7,9 @@ router.get('/', async (req, res) => {
   // find all tags
   // be sure to include its associated Product data
   try {
-    const tagData = await Tag.findAll();
+    const tagData = await Tag.findAll({
+      include: [{ model: Product, as: 'product_data' , through: ProductTag}]
+    });
     res.status(200).json(tagData);
   } catch (err) {
     res.status(500).json(err);
@@ -19,6 +21,8 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const tagData = await Tag.findByPk(req.params.id, {
+      // Connects the tag, by using the ProductTag as a link between Tag and Product through the foreign and primary keys.
+      // "product_data" must match the as: "product_data" in the models/index.js under the Tag.belongsToMany
       include: [{ model: Product, as: 'product_data' , through: ProductTag}] 
 
     });
