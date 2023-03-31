@@ -3,6 +3,7 @@ Built a back end for an e-commerce site using starter code. Configuring with a w
 
 ## Video Demonstration
 
+[App Demo](https://drive.google.com/file/d/1zyDIBKaiFkmxVGMezTb17mpDJKV0hP9c/view)
 
 ## How to Run
 
@@ -14,7 +15,7 @@ Built a back end for an e-commerce site using starter code. Configuring with a w
 
 * After that, run the command
 
-    * npm run seed
+    * npm run seeds
 
 * Once that is done, run
 
@@ -40,7 +41,7 @@ Category POST and PUT
 
 ```md
 {
-  "category_name": "ENTER NAME OF CATEGORY HERE",
+  "category_name": "ENTER NAME OF CATEGORY HERE"
 } 
 ```
 
@@ -61,7 +62,7 @@ Tag POST and PUT
 
 ```md
 {
-  "tag_name": "ENTER NAME OF TAG HERE",
+  "tag_name": "ENTER NAME OF TAG HERE"
 } 
 ```
 
